@@ -3,6 +3,8 @@ unchained.coffee
 
 CoffeeScript Unchained!
 
+![logo](https://f.cloud.github.com/assets/1559832/720696/83656dcc-dfc8-11e2-8ed0-0e459d56fa5d.jpg)
+
 # Scenario
 
 ## This is too fancy for CoffeeScript !
