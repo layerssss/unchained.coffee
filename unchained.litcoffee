@@ -5,7 +5,25 @@ CoffeeScript Unchained!
 
 # Scenario
 
-    # todo
+## This is too fancy for CoffeeScript !
+
+```coffeescript
+$(document.createElement 'div').appendTo('body').css(width: 100, height: 50).text 'haha'
+```
+
+## This is more CoffeeScript!
+
+```
+unchained window, # $ === window.$
+  __$:
+    __0: document.createElement 'div'
+    __appendTo:
+      __0: body
+      css:
+        width: 100
+        height: 50
+      text: 'haha'
+```
 
 # Usage
 
