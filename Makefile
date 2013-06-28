@@ -4,7 +4,7 @@ publish: gh-pages build
 
 gh-pages: node_modules unchained.js
 	rm -Rf docs
-	node_modules/.bin/docco *.litcoffee
+	node_modules/.bin/docco *.litcoffee -l linear
 	cp -R examples docs/examples
 	cp unchained.js docs/
 	cd docs \
