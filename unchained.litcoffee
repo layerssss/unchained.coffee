@@ -3,6 +3,10 @@ unchained.coffee
 
 CoffeeScript Unchained!
 
+# Scenario
+
+    # todo
+
 # Usage
 
 ```coffeescript
@@ -41,7 +45,11 @@ unchained entry, commands
         args.push commands[k]
         delete commands[k]
       return args
-      
+
+
+# Development
+
+* source on `src` branch: [https://github.com/layerssss/unchained.coffee/tree/src](https://github.com/layerssss/unchained.coffee/tree/src)      
 
 # License
 
