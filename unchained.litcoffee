@@ -8,7 +8,13 @@ CoffeeScript Unchained!
 ## This is too fancy for CoffeeScript !
 
 ```coffeescript
-$(document.createElement 'div').appendTo('body').css(width: 100, height: 50).text 'haha'
+$(document.createElement 'div')
+  .appendTo('body')
+  .css(
+    width: 100
+    height: 50
+  )
+  .text('haha')
 ```
 
 ## This is more CoffeeScript!
