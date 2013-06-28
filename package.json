@@ -1,0 +1,25 @@
+{
+  "name": "dd3.coffee",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/layerssss/dd3.coffee.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/layerssss/dd3.coffee/issues"
+  },
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "docco": "~0.6.2"
+  }
+}
