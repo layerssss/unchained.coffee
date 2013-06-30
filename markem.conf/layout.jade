@@ -9,8 +9,12 @@ html
     script(src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.min.js")
     script(type='text/coffeescript',src='unchained.coffee')
     script.
-      if(location.search.substring(1))
+      if(location.search.substring(1)){
         document.write('<script src="examples/' + location.search.substring(1) + '.coffee" type="text/coffeescript"></scr' + 'ipt>');
+        $(function(){
+          $('.no-example').toggle();
+        });
+      }
     style.
       body{
         background-color: #b92825;
@@ -64,21 +68,23 @@ html
       svg{
         max-width: 100%;
       }
+      div.no-example{
+        padding: 2em 5em;
+        border: solid 1px #ca952f;
+        color: #ca952f;
+      }
     script(src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js")
   body
     .container !{content}
       h2#examples Examples
       ul
         li
-          a(href='?jquery-apend#examples') jquery-apend
+          a(href='?d3-join#examples') d3-join
           |  
-          a(href='https://github.com/layerssss/unchained.coffee/blob/master/examples/jquery-apend.coffee') [source]
-        li
-          a(href='?d3-joins#examples') d3-joins
-          |  
-          a(href='https://github.com/layerssss/unchained.coffee/blob/master/examples/d3-joins.coffee') [source]
+          a(href='https://github.com/layerssss/unchained.coffee/blob/master/examples/d3-join.coffee') [source]
         li
           a(href='?d3-nested-joins#examples') d3-nested-joins
           |  
           a(href='https://github.com/layerssss/unchained.coffee/blob/master/examples/d3-nested-joins.coffee') [source]
-      svg(width="1600",height="800",viewBox="-200 -200 1800 1000")
+      .no-example select an example above to preview
+      svg.no-example(width="1600",height="800",viewBox="-200 -200 1800 1000").hide

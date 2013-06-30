@@ -17,6 +17,7 @@ this.unchained = unchained = (entry, commands, path)->
         func.apply entry, args
       else
         func.call entry, v
+  
 
 unchained._extractArgs = (commands)->
   args = []
