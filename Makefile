@@ -12,8 +12,8 @@ EXAMPLES = $(shell find examples)
 
 gh-pages: $(EXAMPLES) unchained.coffee markem.conf/layout.jade README.md
 	markem --out $@
-
 	cp -R $^ $@
+	touch $@
 	
 %.html: %.jade
 	jade < $^ > $@
@@ -24,4 +24,4 @@ unchained.js: unchained.coffee node_modules
 node_modules: package.json
 	npm install
 	touch $@
-.PHONY: gh-pages.publish
+.PHONY: 
