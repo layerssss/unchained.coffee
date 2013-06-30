@@ -1,6 +1,4 @@
 $ -> 
-      
-
   sx = d3.scale.linear().range([0, d3.select('svg').attr 'width']).domain [0, 20]
   sy = d3.scale.linear().range([0, d3.select('svg').attr 'height']).domain [0, 20]
   sr = d3.scale.linear().range([0, 30]).domain [0, 1]

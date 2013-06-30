@@ -1,41 +1,27 @@
 all: unchained.js
 
-publish: gh-pages build 
-
-gh-pages: node_modules unchained.js
-	rm -Rf docs
-	node_modules/.bin/docco *.litcoffee -l linear
-	cp -R examples docs/examples
-	cp unchained.js docs/
-	cd docs \
+%.publish: %
+	cd  $^ \
 		&& git init \
-		&& mv unchained.html index.html\
 		&& git add -A \
-		&& git commit -m 'compiled by [docco](http://jashkenas.github.io/docco/)' \
+		&& git commit -m 'compiled automatically' \
 		&& git remote add origin git@github.com:layerssss/unchained.coffee.git 
-	- cd docs && git push -f origin master:gh-pages
-	rm -Rf docs
+	- cd  $^ && git push -f origin master:$^
 
-unchained.js: unchained.litcoffee node_modules
-	node_modules/.bin/coffee --compile unchained.litcoffee
+EXAMPLES = $(shell find examples)
 
-build: node_modules unchained.js
-	rm -Rf build
-	mkdir build
+gh-pages: $(EXAMPLES) unchained.coffee markem.conf/layout.jade README.md
+	markem --out $@
+
+	cp -R $^ $@
 	
-	cp unchained.litcoffee build/README.md
-	cp unchained.js build/unchained.js
-	cp -R examples build/examples
-	cd build \
-		&& git init \
-		&& git add -A \
-		&& git commit -m 'compiled at $(shell date)' \
-		&& git remote add origin git@github.com:layerssss/unchained.coffee.git 
-	- cd build && git push -f origin master
-	rm -Rf build
+%.html: %.jade
+	jade < $^ > $@
 
+unchained.js: unchained.coffee node_modules
+	node_modules/.bin/coffee --compile unchained.coffee
 
 node_modules: package.json
 	npm install
 	touch $@
-.PHONY: gh-pages build publish
+.PHONY: gh-pages.publish
