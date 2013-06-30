@@ -1,12 +1,14 @@
 all: unchained.js
 
 %.publish: %
+	rm -Rf $^
+	make $^
 	cd  $^ \
 		&& git init \
 		&& git add -A \
 		&& git commit -m 'compiled automatically' \
 		&& git remote add origin git@github.com:layerssss/unchained.coffee.git 
-	- cd  $^ && git push -f origin master:$^
+	- cd $^ && git push -f origin master:$^
 
 EXAMPLES = $(shell find examples)
 
