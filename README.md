@@ -1,4 +1,4 @@
-![logo](https://f.cloud.github.com/assets/1559832/726912/c8ab97f8-e144-11e2-9924-9768d1da1286.jpg)
+![logo](https://f.cloud.github.com/assets/1559832/742657/deba18e6-e3d1-11e2-90a8-0d6459ea5c1f.jpg)
 
 unchained.coffee
 ================
