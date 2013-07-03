@@ -10,9 +10,9 @@
     _results = [];
     for (k in commands) {
       v = commands[k];
-      isMutator = k.match(/^\__/);
+      isMutator = k.match(/^_+([^_].*)$/);
       if (isMutator) {
-        k = k.substring(2);
+        k = isMutator[1];
       }
       func = entry[k];
       if ((func != null ? func.constructor : void 0) !== Function) {
@@ -33,13 +33,23 @@
     return _results;
   };
 
-  unchained._extractArgs = function(commands) {
+  unchained._extractArgs = function(commands, prefix) {
     var args, k;
+    if (prefix == null) {
+      prefix = '';
+    }
+    if (prefix === '') {
+      args = unchained._extractArgs(commands, '_');
+      if (args.length) {
+        return args;
+      }
+      return unchained._extractArgs(commands, '__');
+    }
     args = [];
     if (!(commands && typeof commands === 'object')) {
       return args;
     }
-    while (-1 !== Object.keys(commands).indexOf(k = "__" + (String(args.length)))) {
+    while (-1 !== Object.keys(commands).indexOf(k = "" + prefix + (String(args.length)))) {
       args.push(commands[k]);
       delete commands[k];
     }
