@@ -3,11 +3,11 @@
   var unchained;
 
   this.unchained = unchained = function(entry, commands, path) {
-    var args, func, isMutator, k, v, _results;
+    var args, func, isMutator, k, result, v;
     if (path == null) {
       path = String(entry);
     }
-    _results = [];
+    result = entry;
     for (k in commands) {
       v = commands[k];
       isMutator = k.match(/^_+([^_].*)$/);
@@ -20,17 +20,17 @@
       }
       if (isMutator) {
         args = unchained._extractArgs(v);
-        _results.push(unchained(func.apply(entry, args), v, "" + path + "." + k));
+        result = unchained(func.apply(entry, args), v, "" + path + "." + k);
       } else {
         args = unchained._extractArgs(v);
         if (args.length) {
-          _results.push(func.apply(entry, args));
+          result = func.apply(entry, args);
         } else {
-          _results.push(func.call(entry, v));
+          result = func.call(entry, v);
         }
       }
     }
-    return _results;
+    return result;
   };
 
   unchained._extractArgs = function(commands, prefix) {

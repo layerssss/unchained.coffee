@@ -1,6 +1,6 @@
 this.unchained = unchained = (entry, commands, path)->
   path?= String entry
-  
+  result = entry
   for k, v of commands
     isMutator = k.match /^_+([^_].*)$/
     k = isMutator[1] if isMutator
@@ -10,13 +10,14 @@ this.unchained = unchained = (entry, commands, path)->
 
     if isMutator
       args = unchained._extractArgs v
-      unchained (func.apply entry, args), v, "#{path}.#{k}"
+      result = unchained (func.apply entry, args), v, "#{path}.#{k}"
     else
       args = unchained._extractArgs v
       if args.length
-        func.apply entry, args
+        result = func.apply entry, args
       else
-        func.call entry, v
+        result = func.call entry, v
+  return result
   
 
 unchained._extractArgs = (commands, prefix='')->
