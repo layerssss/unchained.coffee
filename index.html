@@ -1,0 +1,141 @@
+<!DOCTYPE html><html><head><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Stardos+Stencil:400,700"><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.6.3/coffee-script.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.min.js"></script><script type="text/coffeescript" src="unchained.coffee"></script><script>if(location.search.substring(1)){
+  document.write('<script src="' + location.search.substring(1) + '.coffee" type="text/coffeescript"></scr' + 'ipt>');
+  $(function(){
+    $('.no-example').toggle();
+  });
+}</script><style>body{
+  background-color: #b92825;
+  padding: 2em;
+  font-size: 1.4em;
+  line-height: 1.4;
+  color: #ebc06f;
+  font-family: 'Stardos Stencil';
+  font-weight: 400;
+}
+li{
+  line-height: 1.3;
+  list-style-type: square;
+}
+img{
+  display: block;
+  margin: 0 auto;
+}
+h1{
+  display: none;
+}
+h2{
+  font-size: 3em;
+  color: #ffe7b9;
+  line-height: 1.5;
+  margin-top: 1em;
+  font-family: 'Stardos Stencil';
+  text-transform: uppercase;
+  text-align: center;
+  transform: scale(1.5, 1);
+  transform-origin: 50% 0;
+  text-shadow: 2px 1px black;
+  font-weight: 700;
+}
+h3{
+  font-size: 2em;
+  color: #ffe7b9; 
+  line-height: 1;
+  margin-top: 1em;
+  font-family: 'Stardos Stencil';
+  text-transform: uppercase;
+  text-shadow: 1px 1px black;
+  font-weight: 700;
+}
+a{
+  color: #ffe7b9;
+}
+a:hover{
+  color: #ffe7b9;
+  text-shadow: 1px 1px black;
+}
+pre{
+  border: none;
+  border-left: solid 10px #ffe7b9;
+  background-color: transparent;
+  margin-left: 50px;
+}
+code{
+  font-size: 1.2em;
+  line-height: 0.8;
+  border: none;
+  background-color: transparent;
+  color: #ffe7b9;
+}
+pre>code{
+  color: #ffe7b9;
+}
+svg{
+  max-width: 100%;
+}
+div.no-example{
+  padding: 2em 5em;
+  border: solid 1px #ffe7b9;
+  color: #ffe7b9;
+}
+.container{
+  position: relative;
+}
+.github-mark{
+  position: absolute;
+  top: -30px;
+  right: 30px;
+}</style><script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script></head><body><div class="container"><p><img src="https://f.cloud.github.com/assets/1559832/742967/0ebd0b88-e3dd-11e2-8309-5827454e9406.jpg" alt="coffee-unchained"></p>
+<h1>unchained.coffee</h1>
+<h2>Problem</h2>
+<p>There are just too many <code>chains</code> in the <code>JavaScript</code> world.</p>
+<h3>too fancy for CoffeeScript !</h3>
+<pre><code class="lang-coffeescript"># jquery
+$(document.createElement &#39;div&#39;)
+  .appendTo(&#39;body&#39;)
+  .css(
+    width: 100
+    height: 50
+  )
+  .text(&#39;haha&#39;)
+
+
+# d3
+circle = d3.select(&#39;svg&#39;).selectAll(&quot;circle&quot;)
+    .data(data)
+circle.enter()
+    .append(&quot;circle&quot;)
+    .attr(&quot;r&quot;, 2.5)
+circle
+    .attr(&quot;cx&quot;, (d)-&gt; d.x)
+    .attr(&quot;cy&quot;, (d)-&gt; d.y)
+circle.exit().remove()</code></pre>
+<h3>this is more CoffeeScript!</h3>
+<pre><code># jquery
+unchain $, (document.createElement div), -&gt;
+  @$ @appendTo, &#39;body&#39;, -&gt;
+    @css
+      width: 100
+      height: 50
+    @text &#39;haha&#39;
+
+# d3
+unchain d3.select, &#39;svg&#39;, -&gt;
+  @$ @selectAll, &#39;circle&#39;, -&gt;
+    @$ @data, data, -&gt;
+      @$ @enter, -&gt;
+        @$ @append, circle, -&gt;
+          @attr r: 2.5
+      @attr
+        cx: (d)-&gt; d.x
+        cy: (d)-&gt; d.y
+      @$ @exit, -&gt;
+        @remove()</code></pre>
+<h2>Usage</h2>
+<ul>
+<li>see <a href="http://micy.in/unchained.coffee/#examples">some examples</a></li>
+</ul>
+<h2>Development</h2>
+<ul>
+<li>source on <a href="https://github.com/layerssss/unchained.coffee/"><a href="https://github.com/layerssss/unchained.coffee/">https://github.com/layerssss/unchained.coffee/</a></a></li>
+</ul>
+<a href="https://github.com/layerssss/unchained.coffee/" class="github-mark"><img src="https://f.cloud.github.com/assets/1559832/743013/3e0ad1bc-e3de-11e2-8f4b-839831bad656.png"></a><h2 id="examples">Examples</h2><ul><li><a href="?d3-join#examples">d3-join</a> <a href="https://github.com/layerssss/unchained.coffee/blob/master/examples/d3-join.coffee">[source]</a></li><li><a href="?d3-nested-joins#examples">d3-nested-joins</a> <a href="https://github.com/layerssss/unchained.coffee/blob/master/examples/d3-nested-joins.coffee">[source]</a></li></ul><div class="no-example">select an example above to preview</div><svg width="1600" height="800" viewBox="-200 -200 1800 1000" class="no-example hide"></svg></div></body></html>
