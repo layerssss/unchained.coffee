@@ -10,7 +10,7 @@ all: unchained.js
 		&& git remote add origin git@github.com:layerssss/unchained.coffee.git 
 	- cd $^ && git push -f origin master:$^
 
-EXAMPLES = $(shell find examples)
+EXAMPLES = $(shell find examples -type f)
 
 gh-pages: $(EXAMPLES) unchained.coffee markem.conf/layout.jade README.md
 	markem --out $@

@@ -9,39 +9,26 @@ $ ->
       for i in [0..10 + 10 * Math.random()]
         row.push Math.random()
 
-    unchained d3,
-      __select:
-        __0: 'svg'
-        __selectAll:
-          __0: 'g'
-          __data:
-            __0: data
-            __1: (row, i)-> i
-            __enter:
-              append: 'g'
-            __exit:
-              remove: null
-            each: (row, i)->
-              unchained d3,
-                __select:
-                  __0: this
-                  __selectAll:
-                    __0: 'circle'
-                    __data:
-                      __0: row
-                      __1: (circle, j)-> j
-                      __enter:
-                        __append: 
-                          __0: 'circle'
-                          attr:
-                            r: 0
-                      __exit:
-                        remove: null
-                      __transition:
-                          attr:
-                            cx: (circle, j)-> sx j
-                            cy: sy i
-                            r: (circle, j)-> sr circle
+    keyFunc = 
+    unchain d3.select, 'svg', ->
+      @$ @selectAll, 'g', ->
+        @$ @data, data, ((data, i)-> i), ->
+          @$ @enter, ->
+            @append 'g'
+          @$ @exit, ->
+            @remove()
+          @$ @selectAll, 'circle', ->
+            @$ @data, ((row)-> row), ((data, i)-> i), ->
+              @$ @enter, ->
+                @$ @append, 'circle', ->
+                  @attr r: 0
+              @$ @exit, ->
+                @remove()
+              @$ @transition, ->
+                @attr
+                  cx: (circle, j, i)-> sx j
+                  cy: (circle, j, i)-> sy i
+                  r: (circle, j, i)-> sr circle
 
     cb() if cb?.constructor is Function
 

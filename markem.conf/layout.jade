@@ -10,7 +10,7 @@ html
     script(type='text/coffeescript',src='unchained.coffee')
     script.
       if(location.search.substring(1)){
-        document.write('<script src="examples/' + location.search.substring(1) + '.coffee" type="text/coffeescript"></scr' + 'ipt>');
+        document.write('<script src="' + location.search.substring(1) + '.coffee" type="text/coffeescript"></scr' + 'ipt>');
         $(function(){
           $('.no-example').toggle();
         });
@@ -37,7 +37,7 @@ html
         display: none;
       }
       h2{
-        font-size: 4em;
+        font-size: 3em;
         color: #ffe7b9;
         line-height: 1.5;
         margin-top: 1em;
